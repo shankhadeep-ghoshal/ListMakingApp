@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="5dp">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ItemImage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.5"
+        android:layout_margin="5dp"
+        tools:srcCompat="@tools:sample/avatars"
+        android:contentDescription="@string/image_load" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/ItemNameTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:hint="@string/item_name" />
+
+      <androidx.appcompat.widget.LinearLayoutCompat
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="horizontal">
+
+          <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/ItemUnitsMagnitudeTV"
+              android:layout_width="0dp"
+              android:layout_height="wrap_content"
+              android:layout_weight="0.7"
+              android:textSize="20sp"
+              android:hint="@string/unit_number" />
+
+          <androidx.appcompat.widget.AppCompatTextView
+              android:id="@+id/UnitTV"
+              android:layout_width="0dp"
+              android:layout_height="wrap_content"
+              android:layout_weight="0.3"
+              android:textSize="20sp"
+              android:hint="@string/unit"/>
+      </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/ItemPriceTotalTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:hint="@string/total_price" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/IncreaseQtyBtn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:elevation="3dp"
+                android:layout_margin="5dp"
+                android:src="@drawable/ic_plus_image"/>
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/DecreaseQtyBtn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:elevation="3dp"
+                android:layout_weight="1"
+                android:layout_margin="5dp"
+                android:src="@drawable/ic_negative"/>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.AppCompatCheckBox
+        android:id="@+id/IsItemBought"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        android:scaleX="2.5"
+        android:scaleY="2.5"/>
+</androidx.appcompat.widget.LinearLayoutCompat>
