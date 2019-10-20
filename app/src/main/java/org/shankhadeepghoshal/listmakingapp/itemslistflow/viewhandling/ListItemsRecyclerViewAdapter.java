@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
+import org.shankhadeepghoshal.listmakingapp.GlobalConstants;
 import org.shankhadeepghoshal.listmakingapp.R;
 import org.shankhadeepghoshal.listmakingapp.itemslistflow.ItemEntity;
 import org.shankhadeepghoshal.listmakingapp.utility.NullResolverClass;
@@ -88,6 +89,11 @@ public class ListItemsRecyclerViewAdapter extends
         }
 
         void populateData(ItemEntity itemEntity) {
+
+            String unitMagnitude = itemEntity.getUnitSystem() == 1 ?
+                    GlobalConstants.UNITS_MAP_METRIC.get(itemEntity.getUnit()) :
+                    GlobalConstants.UNITS_MAP_IMPERIAL.get(itemEntity.getUnit());
+
             // Handling the image views
             Glide.with(this.itemView)
                     .load(itemEntity.getItemImageUrl())
@@ -98,11 +104,10 @@ public class ListItemsRecyclerViewAdapter extends
                     .resolveNullValue(itemEntity.getItemName(), ""));
             itemUnitsMagnitudeTextView.setText(String.valueOf(NullResolverClass
                     .resolveNullValue(itemEntity.getQuantity(),0.0)));
-            unitTextView.setText(NullResolverClass.resolveNullValue(itemEntity.getItemType()
-                    .getItemTypeValue(itemEntity.getUnitKey()), ""));
             itemPriceTotalTV.setText(String.valueOf(NullResolverClass
                     .resolveNullValue(itemEntity.getQuantity()*itemEntity.getUnitPrice(),
                             0.0)));
+            itemUnitsMagnitudeTextView.setText(unitMagnitude);
 
             // Handling the buttons
             increaseQtyButton.setOnClickListener(v -> {

@@ -11,4 +11,20 @@ import lombok.NonNull;
 public class CategoryEntity {
     @NonNull private String categoryName;
     private int categoryId;
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
+
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
+    }
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public int getCategoryId() {
+        return categoryId;
+    }
 }

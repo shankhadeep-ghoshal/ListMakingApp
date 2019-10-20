@@ -93,7 +93,7 @@ dependencies {
     // Room Test
     testImplementation "androidx.room:room-testing:$room_version"
     // Test helpers for LiveData
-    testImplementation "androidx.arch.core:core-testing:$lifecycle_version"
+    androidTestImplementation "androidx.arch.core:core-testing:$lifecycle_version"
     // Mock server for OkHTTP
     testImplementation "com.squareup.okhttp3:mockwebserver:4.2.1"
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'

@@ -3,10 +3,9 @@ package org.shankhadeepghoshal.listmakingapp.algotests;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.shankhadeepghoshal.listmakingapp.GlobalConstants;
 import org.shankhadeepghoshal.listmakingapp.itemslistflow.CategoryEntity;
 import org.shankhadeepghoshal.listmakingapp.itemslistflow.ItemEntity;
-import org.shankhadeepghoshal.listmakingapp.itemslistflow.unittypes.metric.Volume;
-import org.shankhadeepghoshal.listmakingapp.itemslistflow.unittypes.metric.Weights;
 import org.shankhadeepghoshal.listmakingapp.utility.algosnds.GroupingAndSortingItems;
 
 import java.util.ArrayList;
@@ -27,10 +26,10 @@ final class TestGroupingAndSortingItems {
         for (int i = 1; i < 7; i++) {
             if (i % 2 == 0) {
                 itemEntitiesList.add(new ItemEntity(i, i+"",i+"",
-                        new Volume(),
-                        1,0.0,1.0,
+                        1, GlobalConstants.METRIC, 2, 0.0, 1.0,
                         new CategoryEntity(categoryOneName,categoryOne),
-                        true));
+                        true,
+                        false));
             }
         }
 
@@ -40,10 +39,10 @@ final class TestGroupingAndSortingItems {
         for (int i = 1; i < 7; i++) {
             if (i % 2 == 1){
                 itemEntitiesList.add(new ItemEntity(i, i+"", i+"",
-                        new Weights(),
-                        1,0.0,0.2,
+                        2, GlobalConstants.IMPERIAL, 4,0.0, 0.2,
                         new CategoryEntity(categoryTwoName, categoryTwo),
-                        false));
+                        false,
+                        true));
             }
         }
     }
