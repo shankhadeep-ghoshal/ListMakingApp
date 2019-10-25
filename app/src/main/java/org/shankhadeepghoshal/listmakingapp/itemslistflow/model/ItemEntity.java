@@ -1,4 +1,4 @@
-package org.shankhadeepghoshal.listmakingapp.itemslistflow;
+package org.shankhadeepghoshal.listmakingapp.itemslistflow.model;
 
 import androidx.annotation.Nullable;
 import androidx.room.Embedded;

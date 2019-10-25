@@ -1,4 +1,4 @@
-package org.shankhadeepghoshal.listmakingapp.itemslistflow.datasrotage.localstorage;
+package org.shankhadeepghoshal.listmakingapp;
 
 import android.content.Context;
 
@@ -6,10 +6,11 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-import org.shankhadeepghoshal.listmakingapp.GlobalConstants;
-import org.shankhadeepghoshal.listmakingapp.itemslistflow.ItemEntity;
+import org.shankhadeepghoshal.listmakingapp.itemslistflow.model.ItemEntity;
+import org.shankhadeepghoshal.listmakingapp.itemslistflow.datasrotage.localstorage.LocalItemsEntityDao;
 
-@Database(entities = {ItemEntity.class}, version = GlobalConstants.DATABASE_VERSION)
+@Database(entities = {ItemEntity.class}, exportSchema = false, version =
+        GlobalConstants.DATABASE_VERSION)
 public abstract class LocalDatabase extends RoomDatabase {
     private static volatile LocalDatabase INSTANCE;
 

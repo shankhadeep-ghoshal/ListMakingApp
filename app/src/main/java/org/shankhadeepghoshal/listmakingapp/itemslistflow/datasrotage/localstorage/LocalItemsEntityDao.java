@@ -6,11 +6,10 @@ import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
-import org.shankhadeepghoshal.listmakingapp.itemslistflow.ItemEntity;
+import org.shankhadeepghoshal.listmakingapp.itemslistflow.model.ItemEntity;
 
 import java.util.List;
 
-import io.reactivex.Completable;
 import io.reactivex.Flowable;
 import io.reactivex.Single;
 
@@ -18,16 +17,16 @@ import io.reactivex.Single;
 public interface LocalItemsEntityDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    Completable insertSingleItem(ItemEntity itemEntity);
+    Single<Long> insertSingleItem(ItemEntity itemEntity);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    Completable insertListOfItems(List<ItemEntity> listOfItems);
+    Single<List<Long>> insertListOfItems(List<ItemEntity> listOfItems);
 
     @Delete
-    Completable deleteSelectedItem(ItemEntity itemEntity);
+    Single<Integer> deleteSelectedItem(ItemEntity itemEntity);
 
     @Query("DELETE FROM ItemEntity")
-    Completable deleteAllItems();
+    Single<Integer> deleteAllItems();
 
     @Query("SELECT * FROM ItemEntity")
     Flowable<List<ItemEntity>> getAllItems();

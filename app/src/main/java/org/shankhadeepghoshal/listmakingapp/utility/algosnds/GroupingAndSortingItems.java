@@ -1,6 +1,6 @@
 package org.shankhadeepghoshal.listmakingapp.utility.algosnds;
 
-import org.shankhadeepghoshal.listmakingapp.itemslistflow.ItemEntity;
+import org.shankhadeepghoshal.listmakingapp.itemslistflow.model.ItemEntity;
 
 import java.util.ArrayList;
 import java.util.Comparator;

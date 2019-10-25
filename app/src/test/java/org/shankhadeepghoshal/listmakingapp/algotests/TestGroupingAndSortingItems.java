@@ -4,8 +4,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.shankhadeepghoshal.listmakingapp.GlobalConstants;
-import org.shankhadeepghoshal.listmakingapp.itemslistflow.CategoryEntity;
-import org.shankhadeepghoshal.listmakingapp.itemslistflow.ItemEntity;
+import org.shankhadeepghoshal.listmakingapp.itemslistflow.model.CategoryEntity;
+import org.shankhadeepghoshal.listmakingapp.itemslistflow.model.ItemEntity;
 import org.shankhadeepghoshal.listmakingapp.utility.algosnds.GroupingAndSortingItems;
 
 import java.util.ArrayList;

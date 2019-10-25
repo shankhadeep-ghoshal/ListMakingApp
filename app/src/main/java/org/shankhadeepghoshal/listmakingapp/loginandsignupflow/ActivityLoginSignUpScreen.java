@@ -3,6 +3,7 @@ package org.shankhadeepghoshal.listmakingapp.loginandsignupflow;
 import android.os.Bundle;
 import android.widget.Button;
 
+import org.shankhadeepghoshal.listmakingapp.BaseActivity;
 import org.shankhadeepghoshal.listmakingapp.R;
 
 import butterknife.BindView;
@@ -10,7 +11,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import dagger.android.support.DaggerAppCompatActivity;
 
-public class ActivityLoginSignUpScreen extends DaggerAppCompatActivity {
+public class ActivityLoginSignUpScreen extends BaseActivity {
 
     private Unbinder unbinder;
 

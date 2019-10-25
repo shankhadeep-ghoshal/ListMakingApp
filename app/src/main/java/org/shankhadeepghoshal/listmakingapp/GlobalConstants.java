@@ -10,6 +10,7 @@ public final class GlobalConstants {
     public static final int IMPERIAL = 2;
 
     public static final String DATABASE_NAME = "ListAppLocalDB.db";
+    public static final String BASE_URL = "/";
 
     public static final Map<Integer, String> UNITS_MAP_METRIC =
             new ConcurrentHashMap<Integer, String>() {{

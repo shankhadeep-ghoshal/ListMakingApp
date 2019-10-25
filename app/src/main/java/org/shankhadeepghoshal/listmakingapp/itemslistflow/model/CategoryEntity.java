@@ -1,4 +1,4 @@
-package org.shankhadeepghoshal.listmakingapp.itemslistflow;
+package org.shankhadeepghoshal.listmakingapp.itemslistflow.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

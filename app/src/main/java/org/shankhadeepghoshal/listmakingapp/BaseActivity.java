@@ -2,6 +2,6 @@ package org.shankhadeepghoshal.listmakingapp;
 
 import dagger.android.support.DaggerAppCompatActivity;
 
-public class BaseActivity extends DaggerAppCompatActivity {
+public abstract class BaseActivity extends DaggerAppCompatActivity {
 
 }

@@ -16,10 +16,12 @@ import com.bumptech.glide.Glide;
 
 import org.shankhadeepghoshal.listmakingapp.GlobalConstants;
 import org.shankhadeepghoshal.listmakingapp.R;
-import org.shankhadeepghoshal.listmakingapp.itemslistflow.ItemEntity;
+import org.shankhadeepghoshal.listmakingapp.itemslistflow.model.ItemEntity;
 import org.shankhadeepghoshal.listmakingapp.utility.NullResolverClass;
 
 import java.util.List;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -28,8 +30,8 @@ public class ListItemsRecyclerViewAdapter extends
         RecyclerView.Adapter<ListItemsRecyclerViewAdapter.ListItemViewHolder> {
     private List<ItemEntity> listItems;
 
-    public ListItemsRecyclerViewAdapter(List<ItemEntity> listItems) {
-        this.listItems = listItems;
+    @Inject
+    public ListItemsRecyclerViewAdapter() {
     }
 
     @NonNull

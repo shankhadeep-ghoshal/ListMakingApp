@@ -1,39 +1,47 @@
 package org.shankhadeepghoshal.listmakingapp.itemslistflow.datasrotage.localstorage;
 
-import org.shankhadeepghoshal.listmakingapp.itemslistflow.ItemEntity;
 import org.shankhadeepghoshal.listmakingapp.itemslistflow.datasrotage.IItemsDataStore;
+import org.shankhadeepghoshal.listmakingapp.itemslistflow.model.ItemEntity;
 
 import java.util.List;
 
-import io.reactivex.Completable;
 import io.reactivex.Flowable;
+import io.reactivex.Maybe;
 import io.reactivex.Single;
 
-public class LocalDataStore implements IItemsDataStore {
+public class LocalDataStoreItemsList implements IItemsDataStore {
     private final LocalItemsEntityDao localItemsEntityDao;
 
-    public LocalDataStore(LocalItemsEntityDao localItemsEntityDao) {
+    public LocalDataStoreItemsList(LocalItemsEntityDao localItemsEntityDao) {
         this.localItemsEntityDao = localItemsEntityDao;
     }
 
     @Override
-    public Completable insertOrUpdateSingleItem(ItemEntity itemEntity) {
-        return localItemsEntityDao.insertSingleItem(itemEntity);
+    public Maybe<Boolean> insertOrUpdateSingleItem(ItemEntity itemEntity) {
+        return localItemsEntityDao.insertSingleItem(itemEntity)
+                .map(aLong -> aLong > 0L)
+                .toMaybe();
     }
 
     @Override
-    public Completable insertOrUpdateListOfItems(List<ItemEntity> listOfItems) {
-        return localItemsEntityDao.insertListOfItems(listOfItems);
+    public Maybe<Boolean> insertOrUpdateListOfItems(List<ItemEntity> listOfItems) {
+        return localItemsEntityDao.insertListOfItems(listOfItems)
+                .map(longList -> longList.size() > 0)
+                .toMaybe();
     }
 
     @Override
-    public Completable deleteSelectedItem(ItemEntity itemEntity) {
-        return localItemsEntityDao.deleteSelectedItem(itemEntity);
+    public Maybe<Boolean> deleteSelectedItem(ItemEntity itemEntity) {
+        return localItemsEntityDao.deleteSelectedItem(itemEntity)
+                .map(integer -> integer > 0)
+                .toMaybe();
     }
 
     @Override
-    public Completable deleteAllItems() {
-        return localItemsEntityDao.deleteAllItems();
+    public Maybe<Boolean> deleteAllItems() {
+        return localItemsEntityDao.deleteAllItems()
+                .map(integer -> integer > 0)
+                .toMaybe();
     }
 
     @Override

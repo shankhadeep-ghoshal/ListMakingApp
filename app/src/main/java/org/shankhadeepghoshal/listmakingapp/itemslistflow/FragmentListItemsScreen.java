@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -17,8 +16,9 @@ import org.jetbrains.annotations.NotNull;
 import org.shankhadeepghoshal.listmakingapp.R;
 
 import butterknife.BindView;
+import dagger.android.support.DaggerFragment;
 
-public class FragmentListItemsScreen extends Fragment {
+public class FragmentListItemsScreen extends DaggerFragment {
 
     @BindView(R.id.TVSearchItem)
     EditText searchItemTV;

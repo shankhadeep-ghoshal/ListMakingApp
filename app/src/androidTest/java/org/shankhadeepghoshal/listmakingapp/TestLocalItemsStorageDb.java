@@ -8,14 +8,14 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
-import org.shankhadeepghoshal.listmakingapp.itemslistflow.CategoryEntity;
-import org.shankhadeepghoshal.listmakingapp.itemslistflow.ItemEntity;
-import org.shankhadeepghoshal.listmakingapp.itemslistflow.datasrotage.localstorage.LocalDataStore;
-import org.shankhadeepghoshal.listmakingapp.itemslistflow.datasrotage.localstorage.LocalDatabase;
+import org.shankhadeepghoshal.listmakingapp.itemslistflow.model.CategoryEntity;
+import org.shankhadeepghoshal.listmakingapp.itemslistflow.model.ItemEntity;
+import org.shankhadeepghoshal.listmakingapp.itemslistflow.datasrotage.localstorage.LocalDataStoreItemsList;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings("ResultOfMethodCallIgnored")
 public class TestLocalItemsStorageDb {
     @Rule
     public InstantTaskExecutorRule instantTaskExecutorRule = new InstantTaskExecutorRule();
@@ -58,7 +58,7 @@ public class TestLocalItemsStorageDb {
             true);
 
     private LocalDatabase localDatabase;
-    private LocalDataStore localDataStore;
+    private LocalDataStoreItemsList localDataStoreItemsList;
 
     @Before
     public void initDb() {
@@ -67,7 +67,7 @@ public class TestLocalItemsStorageDb {
                 .allowMainThreadQueries()
                 .build();
 
-        localDataStore = new LocalDataStore(localDatabase.getLocalItemsEntityDao());
+        localDataStoreItemsList = new LocalDataStoreItemsList(localDatabase.getLocalItemsEntityDao());
     }
 
     @After
@@ -77,8 +77,8 @@ public class TestLocalItemsStorageDb {
 
     @Test
     public void testInsertAndGetSingleItem() {
-        localDataStore.insertOrUpdateSingleItem(rice).blockingAwait();
-        localDataStore.getSingleItemByName("55")
+        localDataStoreItemsList.insertOrUpdateSingleItem(rice).blockingGet();
+        localDataStoreItemsList.getSingleItemByName("55")
                 .test()
                 .assertValue(itemEntity ->
                         itemEntity != null && itemEntity.equals(rice));
@@ -87,8 +87,8 @@ public class TestLocalItemsStorageDb {
 
     @Test
     public void testInsertAndGetListOfItems() {
-        localDataStore.insertOrUpdateListOfItems(listOfClothing).blockingAwait();
-        localDataStore.getAllItems()
+        localDataStoreItemsList.insertOrUpdateListOfItems(listOfClothing).blockingGet();
+        localDataStoreItemsList.getAllItems()
                 .test()
                 .assertValue(itemEntities ->
                         itemEntities != null && itemEntities.containsAll(listOfClothing));
@@ -97,8 +97,8 @@ public class TestLocalItemsStorageDb {
 
     @Test
     public void testGetSelectedItemByName() {
-        localDataStore.insertOrUpdateSingleItem(detergent).blockingAwait();
-        localDataStore.getSingleItemByName(detergent.getItemName())
+        localDataStoreItemsList.insertOrUpdateSingleItem(detergent).blockingGet();
+        localDataStoreItemsList.getSingleItemByName(detergent.getItemName())
                 .test()
                 .assertValue(itemEntity ->
                         itemEntity != null && itemEntity.getItemName()
@@ -108,8 +108,8 @@ public class TestLocalItemsStorageDb {
 
     @Test
     public void testGetListOfItemsInPriceRange() {
-        localDataStore.insertOrUpdateListOfItems(listOfGroceryItems).blockingAwait();
-        localDataStore.getListOfItemsWithUnitPriceInRange(1.0,6.0)
+        localDataStoreItemsList.insertOrUpdateListOfItems(listOfGroceryItems).blockingGet();
+        localDataStoreItemsList.getListOfItemsWithUnitPriceInRange(1.0,6.0)
                 .test()
                 .assertValue(itemEntities ->
                         itemEntities != null
@@ -121,8 +121,8 @@ public class TestLocalItemsStorageDb {
 
     @Test
     public void testGetListOfItemsByCategory() {
-        localDataStore.insertOrUpdateListOfItems(listOfClothing).blockingAwait();
-        localDataStore.getListOfItemsOfGivenCategoryId(2)
+        localDataStoreItemsList.insertOrUpdateListOfItems(listOfClothing).blockingGet();
+        localDataStoreItemsList.getListOfItemsOfGivenCategoryId(2)
                 .test()
                 .assertValue(itemEntities ->
                         itemEntities != null && itemEntities.containsAll(listOfClothing));
